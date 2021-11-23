@@ -1,0 +1,24 @@
+<div class="navbarmain">
+    <div class="content">
+        <div class="logo">
+            <a href="{% url 'index' %}" class="h2 text-primary">PMS</a>
+        </div>
+        <ul class="menu-list">
+            <div class="icon cancel-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            {% if request.user.doctor %}
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            {% else %}
+            <li><a href="{% url 'register' %}">Dashboard</a></li>
+            {% endif %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'schedule' %}">Schedule</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</div>

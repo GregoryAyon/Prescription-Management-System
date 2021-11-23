@@ -1,0 +1,67 @@
+{%  extends 'base.html' %}
+{% block content %}
+
+<!-- Main Content -->
+{% load static %}
+<div class="section pt-5">
+  <div class="container pt-5 subdiv">
+    <div class="row card-body bgcontact text-dark">
+      <div class="col-md-3 mb-1 mx-auto card-body card d-flex flex-column justify-content-center align-items-center">
+        <img class="img-fluid" src="{% static 'images/contact-us.png' %}" alt="Card image cap">
+
+        <h1 class="card-title">Contact Me</h1>
+        <p class="card-text">Have questions? I have answers.</p>
+        <p class="card-text"><small class="">Want to get in touch? Fill out the form below to send me a
+            message and I will get back to you as soon as possible!</small></p>
+      </div>
+      <div class="col-md-8 mx-auto card mb-1">
+        <form class="card-body" method="post" action="">
+          {% csrf_token %}
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Name</label>
+              {{ form.name }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Email Address</label>
+              {{ form.email }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Phone Number</label>
+              {{ form.phone }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Message</label>
+              {{ form.desc }}
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div class="container mb-3">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+              <strong>{{ message }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+          </div>
+          <button type="submit" class="btn btn-secondary btn-lg btn-block">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

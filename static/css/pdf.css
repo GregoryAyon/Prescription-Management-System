@@ -1,0 +1,202 @@
+:root {
+    --bg_line_color: rgba(51, 51, 51, 0.8)
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #eeefff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#printpage {
+    height: 11.7in !important;
+    width: 7.2in !important;
+    position: relative;
+    background-color: transparent;
+}
+
+
+#invoice {
+    border: 2px solid #007bff52;
+    overflow: hidden !important;
+    height: 10.6in !important;
+    width: 7.2in !important;
+    height: 10.6in !important;
+    width: 7.2in !important;
+    position: relative;
+    background-color: #fff;
+}
+
+#invoice::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background: url("../images/bg1.png") no-repeat;
+    background-size: cover;
+    opacity: 0.2;
+}
+
+.head-text {
+    font-size: 25px;
+    color: #007bff;
+    font-weight: 600;
+}
+
+.invoice-color {
+    color: red !important
+}
+
+a {
+    text-decoration: none !important
+}
+
+p {
+    margin: 0 !important;
+}
+
+
+
+.sec2 {
+    max-height: 200px;
+}
+
+
+.sec3 h6 {
+    font-size: 14px;
+}
+
+.sec4 {
+    width: 100% !important;
+    height: 500px !important;
+    overflow: hidden !important;
+}
+
+
+.in1 {
+    width: 100px !important;
+    position: relative;
+}
+
+.in1:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 50%;
+    background: var(--bg_line_color);
+}
+
+.in2 {
+    width: 50% !important;
+    position: relative;
+
+}
+
+.in2:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 68%;
+    background: var(--bg_line_color)
+}
+
+.in3 {
+    width: 20% !important;
+    position: relative;
+
+}
+
+.in3:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 67%;
+    background: var(--bg_line_color)
+}
+
+.in4 {
+    width: 20% !important;
+    position: relative;
+
+}
+
+.in4:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 50%;
+    background: var(--bg_line_color)
+}
+
+.in5 {
+    width: 50% !important;
+    position: relative;
+
+}
+
+.in5:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 78%;
+    background: var(--bg_line_color)
+}
+
+.in6 {
+    width: 30% !important;
+    position: relative;
+
+}
+
+.in6:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 75%;
+    background: var(--bg_line_color)
+}
+
+.in7 {
+    width: 35%;
+    position: relative;
+
+}
+
+.in7:after {
+    position: absolute;
+    content: '';
+    height: 1.5px;
+    bottom: -5px;
+    margin: 0 auto;
+    right: 0;
+    width: 49%;
+    background: var(--bg_line_color)
+}
+
+.card-footer {
+    background-color: transparent !important;
+}

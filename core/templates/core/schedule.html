@@ -1,0 +1,60 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="schedule">
+  <div class="container pt-5 px-5">
+    <div class="container pt-5">
+      <div class="row pt-2">
+        <div class="col-md-5 p-2 pt-5">
+          <img class="img-fluid" src="{% static 'images/calendar.svg' %}" alt="week">
+        </div>
+        <div class="col-md-7 p-2 table-responsive">
+          <h3 class="text-center py-2">Doctor's Weekly Schedule</h3>
+          <table class="table table-bordered text-center table-hover">
+            <colgroup>
+              <col class="">
+              <col class="">
+            </colgroup>
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"> Day </th>
+                <th scope="row">Available</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">Saturday</th>
+                <td>{{ schedule_set.Saturday }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Sunday</th>
+                <td>{{ schedule_set.Sunday }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Monday</th>
+                <td>{{ schedule_set.Monday }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Tuesday</th>
+                <td>{{ schedule_set.Tuesday }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Wednesday</th>
+                <td>{{ schedule_set.Wednesday }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Thursday</th>
+                <td>{{ schedule_set.Thursday }}</td>
+              </tr>
+              <tr>
+                <th scope="col">Friday</th>
+                <td>{{ schedule_set.Friday }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

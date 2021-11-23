@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'authlog/fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'authlog/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'authlog/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'authlog/css/style.css' %}">
+  <title>Sign In</title>
+</head>
+
+<body>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'authlog/images/signin.svg' %}" alt="Image" class="img-fluid" style="max-width: 80%;">>
+          <span id="cl" class="d-block text-center m-5">
+            < <a href="{% url 'index' %}" class="m-2">Go back to
+              home</a>
+          </span>
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+                <h3>Sign In</h3>
+              </div>
+              <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group first mb-2">
+                  {{form.username}}
+                </div>
+                <div class="form-group last mb-4">
+                  {{form.password}}
+                </div>
+                {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <p style="color: red;">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+                <div class="d-flex mb-5 align-items-center">
+                  <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                    <input type="checkbox" checked="checked" />
+                    <div class="control__indicator"></div>
+                  </label>
+                  <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                </div>
+                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
+                <div class="social-login">
+                  <a href="#" class="facebook mr-2">
+                    <span class="icon-facebook mr-3"></span>
+                  </a>
+                  <a href="#" class="twitter mr-2">
+                    <span class="icon-twitter mr-3"></span>
+                  </a>
+                  <a href="#" class="google mr-2">
+                    <span class="icon-google mr-3"></span>
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'authlog/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'authlog/js/popper.min.js' %}"></script>
+  <script src="{% static 'authlog/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'authlog/js/main.js' %}"></script>
+  <script>
+    var inputfields = document.getElementsByTagName('input');
+    inputfields[1].placeholder = 'Username';
+    inputfields[2].placeholder = 'Password';
+    for (var i = 1; i < inputfields.length - 1; ++i) {
+      inputfields[i].classList.add('form-control');
+    }
+  </script>
+</body>
+
+</html>

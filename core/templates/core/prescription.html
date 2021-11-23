@@ -1,0 +1,116 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid pt-2 text-white pres">
+  <div class="pt-5">
+    <div class="row d-flex justify-content-center px-5">
+      <h3 class="text-center text-dark col-md-11">Patient Prescription Management</h3>
+      <div class="col-md-4 pb-1 bg1">
+        <h5 class="text-center pt-2">Patient Basic Info</h5>
+        <hr class="bg-light">
+        <form action="" method="post" id="form2">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.name.label}}</div>
+              <div class="w-75">{{form.name}}</div>
+            </div>
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.email.label}}</div>
+              <div class="w-75">{{form.email}}</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.age.label}}</div>
+              <div class="w-75">{{form.age}}</div>
+            </div>
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.weight.label}}</div>
+              <div class="w-75">{{form.weight}}</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.phone.label}}</div>
+              <div class="w-75">{{form.phone}}</div>
+            </div>
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.gender.label}}</div>
+              <div class="w-75">{{form.gender}}</div>
+            </div>
+            <div class="form-group col-md-12 d-flex justify-content-between">
+              <div class="w-25">{{form.address.label}}</div>
+              <div class="w-75">{{form.address}}</div>
+            </div>
+            {{form.date}}
+            <script>
+              $('#id_date').attr('type', 'hidden')
+            </script>
+          </div>
+      </div>
+      <div class="col-md-7 pb-1 text-center bg2 text-dark">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <h5 class="text-center pt-2">Disease & Doctor Suggestion</h5>
+            <hr class="bg-light">
+            {{presform.disease}}
+            </textarea>
+          </div>
+        </div>
+        <hr class="bg-light">
+        <h5 class="text-center">Medicine & Test Suggestion</h5>
+        <div class="form-row">
+          <div class="form-group col-md-10 med">
+            {{medicine.medicine}}
+            <ul class="list-group"></ul>
+            <div id="localSearchSimple"></div>
+            <div id="detail"></div>
+          </div>
+          <div class="form-group col-md-2">
+            <input type="button" class="btn btn-danger btn-block" value="SET" id="btnsave1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-10">
+            {{testform.test_suggetion}}
+          </div>
+          <div class="form-group col-md-2">
+            <input type="button" class="btn btn-danger btn-block" value="SET" id="btnsave2">
+          </div>
+        </div>
+        <hr class="bg-light">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-center">Medicine</h5>
+            <ul class="" id="ul1">
+              {% for medicine in medicines %}
+              <li class="list-group-item text-dark">
+                <span class="editable" data-uid="{{medicine.id}}"
+                  data-type="medicine">{{medicine.medicine}}</span><input type="button" class="close" aria-label="Close"
+                  style="outline: none;border: none;" value="&times;" data-sid="{{medicine.id}}">
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-center">Test Suggestion</h5>
+            <ul class="" id="ul2">
+              {% for test in test_suggetions %}
+              <li class="list-group-item text-dark">
+                <span class="editable" data-uid="{{test.id}}" data-type="test_sugg">{{test.test_suggetion}}</span><input
+                  type="button" class="close" aria-label="Close" style="outline: none;border: none;" value="&times;"
+                  data-sid="{{test.id}}">
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button type="submit" name="_prescribe" class=" my-2 col-md-11 btpres">Prescripted</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

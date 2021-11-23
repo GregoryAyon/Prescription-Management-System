@@ -1,0 +1,106 @@
+{%  extends 'base.html' %}
+{% block content %}
+<br>
+<div class="container-fluid py-5">
+
+    <div class="container-xxl px-5 table-responsive">
+        <hr>
+        <h2 class="text-center font-weight-bold">All Patient List</h2>
+        <hr>
+        <table class="table text-center table-hover" id="myTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Patient UID</th>
+                    <th>Appointment Date</th>
+                    <th>Patient name</th>
+                    <th>Patient Phone</th>
+                    <th>Payment Status</th>
+                    {% if perms.core.can_view_doctor %}
+                    <th class="noExl">Prescribe/View</th>
+                    {% endif %}
+                    <th class="noExl">Print/Download</th>
+                    {% if perms.core.can_view_register %}
+                    <th class="noExl">Update</th>
+                    {% endif %}
+                    <th class="noExl">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                {% for appoint in appoints %}
+                <tr class="font-weight-bold">
+                    <td>{{appoint.id}}</td>
+                    <td>{{appoint.date|date:"Y-m-d"}}</td>
+                    <td>{{appoint.name}}</td>
+                    <td>{{appoint.phone}}</td>
+                    <td>
+                        <div class="optionbox">
+                            <select class=" status filter_select" id="fselect" data-id="{{appoint.id}}"
+                                style=" background: #26ab43;">
+                                <option value='Unpaid' {% if appoint.paying_status == 'Unpaid' %} selected {% endif %}>
+                                    Unpaid</option>
+                                <option value='Paid' {% if appoint.paying_status == 'Paid' %} selected {% endif %}>
+                                    Paid</option>
+                            </select>
+                        </div>
+                    </td>
+                    {% if perms.core.can_view_doctor %}
+                    <td class="noExl"><a class="btn btn-sm btn-info"
+                            href="{% url 'prescription' appoint.id %}">Prescribe/View</a>
+                    </td>
+                    {% endif %}
+                    <td class="noExl"><a class="btn btn-sm btn-warning" href="{% url 'presdown' appoint.id %}"
+                            target="_blank">Print/Download</a>
+                    </td>
+                    {% if perms.core.can_view_register %}
+                    <td>
+                        <a class="btn btn-sm btn-success" href="{% url 'updates' appoint.id %}">Update</a>
+                    </td>
+                    {% endif %}
+                    <td class="noExl">
+                        <input id="app_delete" type="button" class="btn btn-sm btn-danger" value="Delete"
+                            data-aid="{{appoint.id}}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-success btn-sm excelexport mt-2">Click to Export</button>
+
+    </div>
+</div>
+
+<script>
+    $(".excelexport").click(function () {
+        $("#myTable").table2excel({
+            exclude: ".noExl",
+            name: "Worksheet Name",
+            filename: "SomeFile",
+            fileext: ".xls",
+            preserveColors: true
+        });
+    });
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('select.status').on('change', function () {
+            var status = $(this).val();
+            // console.log(status)
+            var id = $(this).data('id')
+            $.ajax({
+                type: "GET",
+                url: "{% url 'status' %}",
+                data: {
+                    status: status,
+                    id: id
+                },
+                success: function (msg) {
+                    // console.log(msg)
+                }
+            })
+        });
+    });
+</script>
+{% endblock %}

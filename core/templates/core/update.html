@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center pt-5  ">
+        <div class=" col-md-3 bg-primary text-white text-center d-flex justify-content-center align-items-center ">
+            <div class=" card-body">
+                <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                <h2 class="py-3">Make an Appointment</h2>
+                <p>Tation argumentum et usu, dicit viderer evertitur te has. Eu dictas concludaturque usu, facete
+                    detracto
+                    patrioque an per, lucilius pertinacia eu vel.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-7 py-3 border appointment">
+            <h4 class="pb-4">Please fill with your details</h4>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.email}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.age }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.weight}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{form.phone}}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.gender }}
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{form.date}}
+                    </div>
+                    <div class="form-group col-md-12">
+                        {{form.address}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                                <label class="form-check-label" for="invalidCheck2">
+                                    <small>By clicking Submit, you agree to our Terms & Conditions, Visitor Agreement
+                                        and Privacy
+                                        Policy.</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-light alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('.modal').modal('show');
+</script>
+{% endblock content %}
