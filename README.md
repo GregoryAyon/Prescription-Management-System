@@ -7,5 +7,5 @@ View live demo: [Live Demo](#)
 
 ## Preview
 
-<img src="assets\images\dark mode preview.PNG">
-<img src="assets\images\dark mode preview.PNG">
+<img src="static\images\preview-demo-1.jpeg">
+<img src="static\images\preview-demo-2.jpeg">
